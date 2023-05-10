@@ -121,7 +121,7 @@ select count(*) as quantidade, max(PoValue) as valor_maximo, min(PoValue) as val
 
 
 
--- Relação de nomes dos fornecedores e nomes dos produtos;
+* Relação de nomes dos fornecedores e nomes dos produtos;
 select r.idSupplier, p.idProduct, SocialName, CNPJ, Pname as Nome_produto, Category, PoDescription as Descricao_produto, PoValue as valor, rating
 	from productsuplier r
 	inner join supplier s on r.idSupplier = s.idSupplier
@@ -132,7 +132,7 @@ select r.idSupplier, p.idProduct, SocialName, CNPJ, Pname as Nome_produto, Categ
 
 
 
--- Relação de nomes dos fornecedores e nomes dos produtos FILTRO POR CATEGORIA;
+* Relação de nomes dos fornecedores e nomes dos produtos FILTRO POR CATEGORIA;
 select r.idSupplier, p.idProduct, SocialName, CNPJ, Pname as Nome_produto, Category, PoDescription as Descricao_produto, PoValue as valor, rating
 	from productsuplier r
 	inner join supplier s on r.idSupplier = s.idSupplier
@@ -143,7 +143,7 @@ select r.idSupplier, p.idProduct, SocialName, CNPJ, Pname as Nome_produto, Categ
 
 
 
--- Relação de nomes dos fornecedores e nomes dos produtos FILTRO POR NOME DO FORNECEDOR;
+* Relação de nomes dos fornecedores e nomes dos produtos FILTRO POR NOME DO FORNECEDOR;
 select r.idSupplier, p.idProduct, SocialName, CNPJ, Pname as Nome_produto, Category, PoDescription as Descricao_produto, PoValue as valor, rating
 	from productsuplier r
 	inner join supplier s on r.idSupplier = s.idSupplier
