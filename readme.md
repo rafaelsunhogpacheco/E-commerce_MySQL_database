@@ -47,11 +47,11 @@ Inserindo dados nas tabelas
 
 
 ### Queries de consulta e recuperação de dados
--- contagem dos clientes cadastrados
+* Contagem dos clientes cadastrados
 select count(*) from clients;
 
 
--- Recuperando Cliente, Pedido e Status
+* Recuperando Cliente, Pedido e Status
 select concat(Fname, ' ', Lname) as Cliente, idOrder as Pedido, orderStatus as Status_pedido
 	from clients c, orders o
     where c.idClient = idOrderClient
@@ -59,7 +59,7 @@ select concat(Fname, ' ', Lname) as Cliente, idOrder as Pedido, orderStatus as S
     
     
     
--- Quantidade de pedidos por clientes
+* Quantidade de pedidos por clientes
 select idClient, count(*) as Number_of_orders, concat(Fname, ' ', Lname) as Cliente from clients
 					inner join orders ON idClient = idOrderClient
 					inner join productOrder on idPOorder = idOrder
@@ -67,13 +67,8 @@ select idClient, count(*) as Number_of_orders, concat(Fname, ' ', Lname) as Clie
 
 
 
--- Algum vendedor também é fornecedor?
-show tables;
-select * from seller;
-select * from supplier;
-
-
--- Recuperando dados cadastrais de Vendedor que é ao mesmo tempo Fornecedor                
+#### Algum vendedor também é fornecedor?
+* Recuperando dados cadastrais de Vendedor que é ao mesmo tempo Fornecedor                
 select idSeller as Vendedor, v.Socialname as Razao_social, v.CNPJ as CNPJ from seller v
 				inner join supplier f on f.CNPJ = v.CNPJ
                 order by idSeller; 
@@ -83,21 +78,16 @@ select idSeller as Vendedor, v.Socialname as Razao_social, v.CNPJ as CNPJ from s
 
 
 
--- Recuperações simples com SELECT Statement
--- Filtros com WHERE Statement
--- Crie expressões para gerar atributos derivados
--- Defina ordenações dos dados com ORDER BY
--- Condições de filtros aos grupos – HAVING Statement
--- Crie junções entre tabelas para fornecer uma perspectiva mais complexa dos dados
+* Recuperações simples com SELECT Statement
+* Filtros com WHERE Statement
+* Crie expressões para gerar atributos derivados
+* Defina ordenações dos dados com ORDER BY
+* Condições de filtros aos grupos – HAVING Statement
+* Crie junções entre tabelas para fornecer uma perspectiva mais complexa dos dados
 
 
 
--- Relação de produtos fornecedores e estoques;
-
-select * from storagelocation; -- idLproduct
-select * from product; -- idProdutc
-select * from productstorage; -- idProdStorage
-
+#### Relação de produtos fornecedores e estoques;
 select idProduct as id_produto, Pname as Nome_item, Category, PoDescription as Descricao, quantity as Quantidade, location as Localizacao from  product p
 			inner join storagelocation s on p.idProduct = s.idLProduct
             inner join productstorage q on q.idProdStorage = s.idLstorage
@@ -105,25 +95,25 @@ select idProduct as id_produto, Pname as Nome_item, Category, PoDescription as D
 
 
      
--- Utilizando operadores e filtros            
+* Utilizando operadores e filtros            
 select idProduct as id_produto, Pname as Nome_item, Category, PoDescription as Descricao, PoValue as Valor, rating, location as Localizacao
 			from  product p
 			inner join storagelocation s on p.idProduct = s.idLProduct; 
 
 
 
--- Utilizando operadores e filtros -- CD Matriz
+* Utilizando operadores e filtros -- CD Matriz
 select idProduct as id_produto, Pname as Nome_item, Category, PoDescription as Descricao, PoValue as Valor, rating, location as Localizacao
 			from  product p
 			inner join storagelocation s on p.idProduct = s.idLProduct
             where location = 'Centro de Distribuição - Matriz'; 
 
 
--- Recuperando produtos que possuem avaliação acima de 4
+* Recuperando produtos que possuem avaliação acima de 4
 select * from product where rating > 4;
 
 
--- Recuperando quantidade de itens, Valor Maximo, Valor mínimo e valor médio dos produtos
+* Recuperando quantidade de itens, Valor Maximo, Valor mínimo e valor médio dos produtos
 select count(*) as quantidade, max(PoValue) as valor_maximo, min(PoValue) as valor_minimo,
     round(avg(PoValue),2) as Valor_medio from product
     order by idProduct;
